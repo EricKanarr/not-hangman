@@ -36,13 +36,25 @@ const correctLetter = [];
 // const mysteryWord = words(Math.floor(Math.random() * words.length));
 
 // variables
-let startButton = document.getElementById('startButton');
+
 // let submitButton = document.getElementById('submitButton');
 // let letterGuessed = "";
 // let searchArea = document.getElementById('searchArea');
 
 
 // create button to start game and get random word
+app.get('/', function(req, res){
+  res.render('startpage')
+})
+app.post('/', function(req, res){
+  res.redirect('/game')
+})
+app.get('/game', function(req, res){
+  res.render('gameplay')
+})
+app.post('/game', function(req, res){
+  userGuess()
+})
 function playGame(array) {
   const mysteryValue = array[Math.floor(Math.random() * array.length)];
   return mysteryValue;
